@@ -11,5 +11,5 @@ spl_autoload_register(function ($nome_da_classe)
         include $arquivo;
     }
     else
-       exit ('Arquivo não encontrado. Arquivo:' . $arquivo . "<br/>");
+    exit ('Arquivo não encontrado. Arquivo:' . $arquivo . "<br/>");
 });

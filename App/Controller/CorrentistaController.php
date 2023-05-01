@@ -7,8 +7,12 @@ use Exception;
 
 class CorrentistaController extends Controller
 {
+    public static function login() : void 
+    {
 
-    public static function salvar() : void
+    }
+
+    public static function save() : void
     {
         try
         {
@@ -45,7 +49,7 @@ class CorrentistaController extends Controller
         }
     }
 
-    public static function deletar() : void
+    public static function delete() : void
     {
         try 
         {

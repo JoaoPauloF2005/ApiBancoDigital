@@ -2,16 +2,18 @@
 
 namespace App\Controller;
 
+use App\Model\ContaModel;
+
 class ContaController extends Controller
 {
-    public static function save()
+    public static function abrir()
     {
 
     }
 
-    public static function select()
+    public static function fechar()
     {
-
+        
     }
 
     public static function extrato()
@@ -19,18 +21,8 @@ class ContaController extends Controller
         
     }
 
-    public static function EnviarPix()
-    {
-
-    }
-
-    public static function ReceberPix()
-    {
-
-    }
-
-    public static function delete()
-    {
+    public static function index()
+    {      
 
     }
 }

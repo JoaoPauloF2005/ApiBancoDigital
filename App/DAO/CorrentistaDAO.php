@@ -22,7 +22,7 @@ class CorrentistaDAO extends DAO
     {
        
         $sql = "INSERT INTO correntista
-                            (nome, email, cpf, data_nascimento, senha) VALUE (?, ?, ?, ?, sha1(?) ) ";
+                            (nome, email, cpf, data_nascimento, senha) VALUE (?, ?, ?, ?, ?) ";
 
         $stmt = $this->conexao->prepare($sql);
 

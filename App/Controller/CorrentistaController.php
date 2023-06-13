@@ -27,7 +27,7 @@ class CorrentistaController extends Controller
     }
 
 
-    public static function salvar()
+    public static function save()
     {
         try
         {

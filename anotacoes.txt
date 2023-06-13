@@ -1,0 +1,2 @@
+                //<control:MaskedEntry x:Name="txt_data_nasc" Placeholder="Data de nascimento" FontAttributes="Bold" TextColor="black" PlaceholderColor="black" Keyboard="Numeric" Mask="XX/XX/XXXX" Margin="10"/>
+                    Data_Nascimento = txt_data_nasc.Date,

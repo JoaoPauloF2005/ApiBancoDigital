@@ -39,6 +39,15 @@ case '/transacao/pix/enviar':
   TransacaoController::enviarPix();
 break;
 
+ // Chave Pix
+ case '/pix/chave/salvar':
+  ChavePixController::salvar();
+break;
+
+case '/pix/chave/remover':
+  ChavePixController::remover();
+break;
+
 
 default:
   header('HTTP/1.0 403 Forbidden');

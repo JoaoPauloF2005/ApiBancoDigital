@@ -3,79 +3,78 @@
 namespace App\DAO;
 
 use App\Model\ChavePixModel;
-use \PDO;
+use PDO;
 
 class ChavePixDAO extends DAO
 {
     public function __construct()
     {
-        parent::__construct();
+        parent::__construct();       
     }
 
-    public function insert(ChavePixModel $model)
+    public function save(ChavePixModel $model) : ?ChavePixModel
     {
-        $sql = "INSERT INTO chave_pix (chave, tipo, id_conta) VALUE (?, ?, ?)";
+        return ($model->id == null) ? $this->insert($model) : $this->update($model);
+    }
 
+    // Método que recebe um model e extrai os dados do model para realizar o insert na tabela correspondente ao model. 
+    public function insert(ChavePixModel $model) : ?ChavePixModel
+    {
+        $sql = "INSERT INTO chave_pix (id_conta, tipo, chave) VALUES (?, ?, ?) ";
         $stmt = $this->conexao->prepare($sql);
 
-        $stmt->bindValue(1, $model->chave);
+        $stmt->bindValue(1, $model->id_conta);
         $stmt->bindValue(2, $model->tipo);
-        $stmt->bindValue(3, $model->id_conta);
+        $stmt->bindValue(3, $model->chave);
 
         $stmt->execute();
+
+        $model->id = $this->conexao->lastInsertId();
+
+        return $model;
     }
 
-    public function update(ChavePixModel $model)
+    // Método que recebe o Model preenchido e atualiza no banco de dados.
+    public function update(ChavePixModel $model) : ?ChavePixModel
     {
-        $sql = "UPDATE chave_pix SET chave = ?, tipo = ?, id_conta = ? WHERE id = ?";
-
+        $sql = "UPDATE chave_pix SET id_conta=?, tipo=?, chave=? WHERE id=? ";
         $stmt = $this->conexao->prepare($sql);
 
-        $stmt->bindValue(1, $model->chave);
+        $stmt->bindValue(1, $model->id_conta);
         $stmt->bindValue(2, $model->tipo);
-        $stmt->bindValue(3, $model->id_conta);
-        $stmt->bindValue(4, $model->id);
+        $stmt->bindValue(3, $model->chave);
+        $stmt->bindValue(3, $model->id);
 
         $stmt->execute();
+
+        $model->id = $this->conexao->lastInsertId();
+
+        return $model;
     }
 
-    public function select()
+
+    // Método que retorna todas os registros da tabela pessoa no banco de dados.
+    public function select(int $id_conta)
     {
-        $sql = "SELECT cp.*, co.nome as conta_nome
-                FROM chave_pix cp
-                JOIN conta c ON c.id = cp.id_conta
-                JOIN correntista co ON co.id = c.id_correntista";
+        $sql = "SELECT * FROM chave_pix WHERE id_conta = ? ";
 
         $stmt = $this->conexao->prepare($sql);
-
+        $stmt->bindValue(1, $id_conta);
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_CLASS);
+        return $stmt->fetchAll(PDO::FETCH_CLASS);        
     }
 
-    public function selectById(int $id)
+
+    // Remove um registro da tabela pessoa do banco de dados.
+    public function delete(ChavePixModel $model) : bool
     {
-        $sql = "SELECT cp.*, co.nome as conta_nome
-                FROM chave_pix cp
-                JOIN conta c ON c.id = cp.id_conta
-                JOIN correntista co ON co.id = c.id_correntista
-                WHERE cp.id = ?";
+        $sql = "DELETE FROM chave_pix WHERE id=? AND id_conta=? ";
 
         $stmt = $this->conexao->prepare($sql);
-        $stmt->bindValue(1, $id);
+        $stmt->bindValue(1, $model->id);
+        $stmt->bindValue(1, $model->id_conta);
 
-        $stmt->execute();
-
-        return $stmt->fetchObject("App\Model\ChavePixModel");
-    }
-
-    public function delete(int $id)
-    {
-        $sql = "DELETE FROM chave_pix WHERE id = ?";
-
-        $stmt = $this->conexao->prepare($sql);
-        $stmt->bindValue(1, $id);
-
-        $stmt->execute();
+        return $stmt->execute();
     }
 }

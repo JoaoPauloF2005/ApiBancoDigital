@@ -25,9 +25,14 @@ class ContaDAO extends DAO
         $stmt->bindValue(2, $model->saldo);
         $stmt->bindValue(3, $model->limite);
         $stmt->bindValue(4, $model->tipo);
-        $stmt->bindValue(5, $model->data_abertura);
 
         return $stmt->execute();
+
+        $model->id = $this->conexao->lastInsertId();
+
+        return $model;
+
+
     }
 
 

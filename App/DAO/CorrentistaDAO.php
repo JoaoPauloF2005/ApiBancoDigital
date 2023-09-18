@@ -39,8 +39,18 @@ class CorrentistaDAO extends DAO
         return $model;
     }
 
-    private function update(CorrentistaModel $m) {
+    private function update(CorrentistaModel $model)
+    {
+        /*$sql = "UPDATE correntista SET nome=?, cpf=?, data_nasc=? WHERE id=?";
 
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindValue(1, $model->nome);
+        $stmt->bindValue(2, $model->cpf);
+        $stmt->bindValue(3, $model->data_nasc);
+        $stmt->bindValue(4, $model->senha);
+        $stmt->bindValue(5, $model->id);
+        
+        return $stmt->execute();*/
     }
 
     public function selectByCpfAndSenha($cpf, $senha) : CorrentistaModel

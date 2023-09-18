@@ -7,7 +7,7 @@ use App\DAO\CorrentistaDAO;
 
 class CorrentistaModel extends Model
 {
-    public $id, $nome, $email, $cpf, $data_nasc, $senha;
+    public $id, $nome, $email, $cpf, $data_nascimento, $senha;
     public $rows_contas; // Array de objetos ContaModel
 
     public function save() : ?CorrentistaModel

@@ -1,7 +1,7 @@
-#0 C:\Users\Usuario\Desktop\ApiBancoDigital\App\DAO\ContaDAO.php(30): PDOStatement->execute()
-#1 C:\Users\Usuario\Desktop\ApiBancoDigital\App\Model\CorrentistaModel.php(30): App\DAO\ContaDAO->insert(Object(App\Model\ContaModel))
-#2 C:\Users\Usuario\Desktop\ApiBancoDigital\App\Controller\CorrentistaController.php(46): App\Model\CorrentistaModel->save()
-#3 C:\Users\Usuario\Desktop\ApiBancoDigital\App\rotas.php(13): App\Controller\CorrentistaController::save()
-#4 C:\Users\Usuario\Desktop\ApiBancoDigital\App\index.php(5): include('C:\\Users\\Usuari...')
-#5 C:\Users\Usuario\Desktop\ApiBancoDigital\index.php(3): include('C:\\Users\\Usuari...')
+#0 C:\Users\famil\OneDrive\Área de Trabalho\ApiBancoDigital\App\DAO\ContaDAO.php(26): PDOStatement->execute()
+#1 C:\Users\famil\OneDrive\Área de Trabalho\ApiBancoDigital\App\Model\CorrentistaModel.php(30): App\DAO\ContaDAO->insert(Object(App\Model\ContaModel))
+#2 C:\Users\famil\OneDrive\Área de Trabalho\ApiBancoDigital\App\Controller\CorrentistaController.php(46): App\Model\CorrentistaModel->save()
+#3 C:\Users\famil\OneDrive\Área de Trabalho\ApiBancoDigital\App\rotas.php(13): App\Controller\CorrentistaController::save()
+#4 C:\Users\famil\OneDrive\Área de Trabalho\ApiBancoDigital\App\index.php(5): include('C:\\Users\\famil\\...')
+#5 C:\Users\famil\OneDrive\Área de Trabalho\ApiBancoDigital\index.php(3): include('C:\\Users\\famil\\...')
 #6 {main}

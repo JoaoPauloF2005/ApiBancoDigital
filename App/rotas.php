@@ -17,19 +17,6 @@ case '/correntista/entrar':
   CorrentistaController::login();
 break;
 
-// Conta
-case '/conta/abrir':
-  ContaController::abrir();
-break;
-
-case '/conta/fechar':
-  ContaController::fechar();
-break;
-
-case '/conta/extrato':
-  ContaController::extrato();
-break;
-
 // Transação
 case '/transacao/pix/receber':
   TransacaoController::receberPix();
